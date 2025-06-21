@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weekplanner</title>
+  <link rel="stylesheet" href="stylesheet/stylesheet.css">
+</head>
+<body>
+
+<h1> Mijn Weekplanner</h1>
+
+<div class="week">
+  <!-- Maandag -->
+  <div class="day">
+    <h2>Maandag</h2>
+    <div class="column-wrapper">
+      <h3>Ochtend</h3>
+      <div class="column" id="maandag-ochtend"></div>
+    </div>
+    <div class="column-wrapper">
+      <h3>Middag</h3>
+      <div class="column" id="maandag-middag"></div>
+    </div>
+    <div class="column-wrapper">
+      <h3>Avond</h3>
+      <div class="column" id="maandag-avond"></div>
+    </div>
+    <button class="add-day-task-btn" data-dag="maandag">➕ Taak toevoegen</button>
+  </div>
+
+  <!-- Herhaal voor de overige dagen -->
+  <div class="day">
+    <h2>Dinsdag</h2>
+    <div class="column-wrapper"><h3>Ochtend</h3><div class="column" id="dinsdag-ochtend"></div></div>
+    <div class="column-wrapper"><h3>Middag</h3><div class="column" id="dinsdag-middag"></div></div>
+    <div class="column-wrapper"><h3>Avond</h3><div class="column" id="dinsdag-avond"></div></div>
+    <button class="add-day-task-btn" data-dag="dinsdag">➕ Taak toevoegen</button>
+  </div>
+
+  <div class="day">
+    <h2>Woensdag</h2>
+    <div class="column-wrapper"><h3>Ochtend</h3><div class="column" id="woensdag-ochtend"></div></div>
+    <div class="column-wrapper"><h3>Middag</h3><div class="column" id="woensdag-middag"></div></div>
+    <div class="column-wrapper"><h3>Avond</h3><div class="column" id="woensdag-avond"></div></div>
+    <button class="add-day-task-btn" data-dag="woensdag">➕ Taak toevoegen</button>
+  </div>
+
+  <div class="day">
+    <h2>Donderdag</h2>
+    <div class="column-wrapper"><h3>Ochtend</h3><div class="column" id="donderdag-ochtend"></div></div>
+    <div class="column-wrapper"><h3>Middag</h3><div class="column" id="donderdag-middag"></div></div>
+    <div class="column-wrapper"><h3>Avond</h3><div class="column" id="donderdag-avond"></div></div>
+    <button class="add-day-task-btn" data-dag="donderdag">➕ Taak toevoegen</button>
+  </div>
+
+  <div class="day">
+    <h2>Vrijdag</h2>
+    <div class="column-wrapper"><h3>Ochtend</h3><div class="column" id="vrijdag-ochtend"></div></div>
+    <div class="column-wrapper"><h3>Middag</h3><div class="column" id="vrijdag-middag"></div></div>
+    <div class="column-wrapper"><h3>Avond</h3><div class="column" id="vrijdag-avond"></div></div>
+    <button class="add-day-task-btn" data-dag="vrijdag">➕ Taak toevoegen</button>
+  </div>
+
+  <div class="day">
+    <h2>Zaterdag</h2>
+    <div class="column-wrapper"><h3>Ochtend</h3><div class="column" id="zaterdag-ochtend"></div></div>
+    <div class="column-wrapper"><h3>Middag</h3><div class="column" id="zaterdag-middag"></div></div>
+    <div class="column-wrapper"><h3>Avond</h3><div class="column" id="zaterdag-avond"></div></div>
+    <button class="add-day-task-btn" data-dag="zaterdag">➕ Taak toevoegen</button>
+  </div>
+
+  <div class="day">
+    <h2>Zondag</h2>
+    <div class="column-wrapper"><h3>Ochtend</h3><div class="column" id="zondag-ochtend"></div></div>
+    <div class="column-wrapper"><h3>Middag</h3><div class="column" id="zondag-middag"></div></div>
+    <div class="column-wrapper"><h3>Avond</h3><div class="column" id="zondag-avond"></div></div>
+    <button class="add-day-task-btn" data-dag="zondag">➕ Taak toevoegen</button>
+  </div>
+</div>
+
+<button id="clearAllBtn" class="clear-all-btn">Alles wissen</button>
+
+<!-- Modaal voor taak toevoegen -->
+<div id="taskModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Nieuwe taak toevoegen</h2>
+    <input type="text" id="taskInput" placeholder="Typ hier je taak..." />
+    <button id="saveTaskBtn">Toevoegen</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
+
+<!-- onderandere inspiratie gehaald uit: https://medium.com/%40ravipatel.it/javascript-local-storage-concepts-with-example-19cebaf3011b -->

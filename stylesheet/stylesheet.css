@@ -1,0 +1,194 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9fb;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.week {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.day {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 15px;
+  width: 300px;
+  min-height: 400px;
+}
+
+.day h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.column-wrapper h3 {
+  text-align: center;
+  margin: 10px 0 5px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.column {
+  background: #f0f2f5;
+  padding: 10px;
+  border-radius: 8px;
+  min-height: 80px;
+  margin-bottom: 15px;
+}
+
+.task {
+  background: #dfe6e9;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 6px;
+  cursor: grab;
+  transition: background 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task:hover {
+  background: #b2bec3;
+}
+
+.ghost {
+  opacity: 0.5;
+  border: 2px dashed #aaa;
+}
+
+@media (max-width: 768px) {
+  .week {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .day {
+    width: 90%;
+  }
+}
+
+.add-day-task-btn {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
+  background-color: #2ecc71;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-day-task-btn:hover {
+  background-color: #27ae60;
+}
+
+/* Modal styling */
+.modal {
+  display: none; /* verborgen standaard */
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px 30px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.close-button {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+#taskInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#saveTaskBtn {
+  padding: 10px;
+  background-color: #2ecc71;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#saveTaskBtn:hover {
+  background-color: #27ae60;
+}
+
+/* Prullenbak knop stijl */
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+  color: #e74c3c;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn:hover {
+  color: #c0392b;
+}
+
+.clear-all-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 10px auto;
+  display: block;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.clear-all-btn:hover {
+  background-color: #c0392b;
+}
