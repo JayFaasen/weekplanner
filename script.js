@@ -1,7 +1,7 @@
 const dagen = ['maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag'];
 const tijdvakken = ['ochtend', 'middag', 'avond'];
 
-// Hulpfuncties voor localStorage
+//localStorage
 function laadTaken() {
   const data = localStorage.getItem('weekplanner');
   return data ? JSON.parse(data) : {};
@@ -24,7 +24,7 @@ function updateStorage() {
   slaTakenOp(data);
 }
 
-// Init taken
+//taken
 const opgeslagenTaken = laadTaken();
 
 dagen.forEach(dag => {
@@ -50,7 +50,7 @@ dagen.forEach(dag => {
         kolom.appendChild(taak);
       });
 
-      // Voorbeeldtaak (alleen tonen bij lege localStorage)
+      // Voorbeeldtaak
       if (kolomId === 'maandag-ochtend' && taken.length === 0) {
         const voorbeeldTaak = document.createElement('div');
         voorbeeldTaak.className = 'task';
@@ -63,6 +63,8 @@ dagen.forEach(dag => {
   });
 });
 
+
+//taken bewerken/verwijderen
 function voegBewerkEnVerwijderKnoppenToe(taak) {
   const btnContainer = document.createElement('span');
   btnContainer.style.display = 'flex';
@@ -93,7 +95,7 @@ function voegBewerkEnVerwijderKnoppenToe(taak) {
   taak.appendChild(btnContainer);
 }
 
-// Modal & toevoegen
+//taak toevoegen
 const modal = document.getElementById('taskModal');
 const closeButton = modal.querySelector('.close-button');
 const saveTaskBtn = document.getElementById('saveTaskBtn');
