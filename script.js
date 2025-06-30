@@ -11,6 +11,7 @@ function slaTakenOp(data) {
   localStorage.setItem('weekplanner', JSON.stringify(data));
 }
 
+
 function updateStorage() {
   const data = {};
   dagen.forEach(dag => {
@@ -24,7 +25,7 @@ function updateStorage() {
   slaTakenOp(data);
 }
 
-//taken
+//drag en drop
 const opgeslagenTaken = laadTaken();
 
 dagen.forEach(dag => {
@@ -64,7 +65,7 @@ dagen.forEach(dag => {
 });
 
 
-//taken bewerken/verwijderen
+//taken bewerken/verwijderen 
 function voegBewerkEnVerwijderKnoppenToe(taak) {
   const btnContainer = document.createElement('span');
   btnContainer.style.display = 'flex';
@@ -95,7 +96,7 @@ function voegBewerkEnVerwijderKnoppenToe(taak) {
   taak.appendChild(btnContainer);
 }
 
-//taak toevoegen
+//modal pop-up
 const modal = document.getElementById('taskModal');
 const closeButton = modal.querySelector('.close-button');
 const saveTaskBtn = document.getElementById('saveTaskBtn');
@@ -130,6 +131,7 @@ saveTaskBtn.addEventListener('click', () => {
   const taakTekst = taskInput.value.trim();
   if (taakTekst === '') return;
 
+  //taak toevoegen/bewerken
   if (huidigeTaak) {
     huidigeTaak.firstChild.textContent = taakTekst;
   } else {
@@ -146,14 +148,13 @@ saveTaskBtn.addEventListener('click', () => {
   huidigeTaak = null;
 });
 
+//alles legen
 const clearBtn = document.getElementById('clearAllBtn');
 
 clearBtn.addEventListener('click', () => {
   if (confirm("Weet je zeker dat je alle taken wilt verwijderen?")) {
-    // LocalStorage leegmaken
     localStorage.removeItem('weekplanner');
 
-    // Alle kolommen leegmaken
     dagen.forEach(dag => {
       tijdvakken.forEach(tijd => {
         const kolom = document.getElementById(`${dag}-${tijd}`);
@@ -164,6 +165,6 @@ clearBtn.addEventListener('click', () => {
 });
 
 //bronnen
-// https://www.youtube.com/watch?v=6ophW7Ask_0 voor Modal pop-up, zoals ik gebruikt in taak pop-up
+// https://www.youtube.com/watch?v=6ophW7Ask_0 voor Modal pop-up, zoals ik gebruik in taak pop-up
 // https://www.youtube.com/watch?v=Ttf3CEsEwMQæ gebruikt als ondersteuning en uitleg bij het toevoegen, beweren en verwijderen van taken
 // https://www.youtube.com/watch?v=j-BsQhDsx24 gebruikt voor de localstorage functionaliteit
