@@ -1,194 +1,504 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f9f9fb;
-  margin: 0;
-  padding: 20px;
-  color: #333;
+
+/* =========================
+   COLOR PALETTE
+========================= */
+
+:root {
+    --background: #f3f5f0;
+    --card: #ffffff;
+    --surface: #f5f7f3;
+    --border: #e3e8df;
+
+    --text: #303830;
+    --muted: #7c867a;
+
+    --green: #74866d;
+    --green-dark: #52654e;
+    --green-light: #e6ede3;
+
+    --purple: #a18bbd;
+    --purple-light: #f0ebf5;
+
+    --danger: #b76f70;
+
+    --shadow: 0 5px 18px rgba(42, 55, 40, 0.045);
 }
+
+
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--background);
+    margin: 0;
+    padding: 45px 5%;
+    color: var(--text);
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 h1 {
-  text-align: center;
-  margin-bottom: 30px;
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    margin: 0 0 45px;
+    color: var(--green-dark);
 }
+
+h1::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 3px;
+    background: var(--purple);
+    margin: 18px auto 0;
+    border-radius: 5px;
+}
+
+
+/* =========================
+   WEEK OVERVIEW
+========================= */
 
 .week {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+    max-width: 1450px;
+    margin: 0 auto;
 }
 
+
+/* =========================
+   DAY CARDS
+========================= */
+
 .day {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  padding: 15px;
-  width: 300px;
-  min-height: 400px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    box-shadow: var(--shadow);
+    padding: 22px;
+
+    width: calc(25% - 18px);
+    max-width: 340px;
+    min-width: 250px;
+
+    min-height: 430px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.day:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(42, 55, 40, 0.09);
 }
 
 .day h2 {
-  text-align: center;
-  margin-bottom: 10px;
-  color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    text-align: left;
+    margin: 0 0 22px;
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--green-dark);
+    font-size: 1.3rem;
+    font-weight: 650;
+}
+
+.day h2::before {
+    content: "";
+    width: 7px;
+    height: 25px;
+    border-radius: 5px;
+    background: var(--purple);
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   TIME PERIODS
+========================= */
+
+.column-wrapper {
+    margin-bottom: 17px;
 }
 
 .column-wrapper h3 {
-  text-align: center;
-  margin: 10px 0 5px;
-  font-size: 0.95rem;
-  color: #555;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    text-align: left;
+    margin: 0 0 9px;
+
+    font-size: 0.76rem;
+    font-weight: 650;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    color: var(--muted);
 }
 
 .column {
-  background: #f0f2f5;
-  padding: 10px;
-  border-radius: 8px;
-  min-height: 80px;
-  margin-bottom: 15px;
+    background: #f8faf7;
+    border: 1px solid #e9eee6;
+
+    padding: 9px;
+    border-radius: 11px;
+
+    min-height: 76px;
+    margin-bottom: 0;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
 }
 
+.column:empty {
+    background: #fbfcfa;
+    border: 1px dashed #dce4d8;
+}
+
+
+/* =========================
+   TASKS
+========================= */
+
 .task {
-  background: #dfe6e9;
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 6px;
-  cursor: grab;
-  transition: background 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background: var(--green-light);
+    color: var(--text);
+
+    border-left: 3px solid var(--green);
+    border-radius: 8px;
+
+    padding: 11px;
+    margin-top: 4px;
+
+    cursor: grab;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 0.88rem;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
 .task:hover {
-  background: #b2bec3;
+    background: #dce7d8;
+}
+
+.task:active {
+    cursor: grabbing;
 }
 
 .ghost {
-  opacity: 0.5;
-  border: 2px dashed #aaa;
+    opacity: 0.45;
+    border: 2px dashed var(--green);
 }
 
-@media (max-width: 768px) {
-  .week {
-    flex-direction: column;
+
+/* =========================
+   EDIT AND DELETE BUTTONS
+========================= */
+
+.edit-btn,
+.delete-btn {
+    background: none;
+    border: none;
+
+    cursor: pointer;
+
+    padding: 2px;
+    margin-left: 4px;
+
+    font-size: 14px;
+
+    display: flex;
     align-items: center;
-  }
+    justify-content: center;
 
-  .day {
-    width: 90%;
-  }
+    opacity: 0.65;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
 }
+
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 1;
+    transform: scale(1.12);
+}
+
+.delete-btn {
+    color: var(--danger);
+}
+
+
+/* =========================
+   ADD TASK BUTTON
+========================= */
 
 .add-day-task-btn {
-  width: 100%;
-  padding: 10px 0;
-  margin-top: 10px;
-  background-color: #2ecc71;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+    width: 100%;
+
+    padding: 12px;
+    margin-top: auto;
+
+    background: var(--green-dark);
+    color: white;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .add-day-task-btn:hover {
-  background-color: #27ae60;
+    background: var(--green);
+    color: white;
 }
 
-/* Modal styling */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-  align-items: center;
-  justify-content: center;
-}
 
-.modal-content {
-  background-color: #fff;
-  margin: auto;
-  padding: 20px 30px;
-  border-radius: 12px;
-  width: 300px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.close-button {
-  color: #aaa;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  align-self: flex-end;
-}
-
-.close-button:hover {
-  color: #000;
-}
-
-#taskInput {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-#saveTaskBtn {
-  padding: 10px;
-  background-color: #2ecc71;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-#saveTaskBtn:hover {
-  background-color: #27ae60;
-}
-
-/* Prullenbak knop stijl */
-.delete-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-left: 8px;
-  color: #e74c3c;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-}
-
-.delete-btn:hover {
-  color: #c0392b;
-}
+/* =========================
+   CLEAR ALL BUTTON
+========================= */
 
 .clear-all-btn {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  margin: 10px auto;
-  display: block;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+    background: transparent;
+    color: var(--danger);
+
+    border: 1px solid #e5caca;
+    border-radius: 8px;
+
+    padding: 10px 22px;
+    margin: 30px auto 0;
+
+    display: block;
+
+    font-size: 0.85rem;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
 .clear-all-btn:hover {
-  background-color: #c0392b;
+    background: #f5e8e8;
+    color: #965354;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: auto;
+
+    background: rgba(35, 43, 34, 0.45);
+    backdrop-filter: blur(4px);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative;
+
+    background: var(--card);
+
+    margin: auto;
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    width: min(90%, 380px);
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-content h2 {
+    color: var(--green-dark);
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.close-button {
+    color: var(--muted);
+
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1;
+
+    cursor: pointer;
+    align-self: flex-end;
+
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: var(--purple);
+}
+
+
+/* =========================
+   TASK INPUT
+========================= */
+
+#taskInput {
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+
+    width: 100%;
+
+    background: var(--surface);
+    color: var(--text);
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#taskInput:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px var(--purple-light);
+}
+
+#taskInput::placeholder {
+    color: #a2aaa0;
+}
+
+#saveTaskBtn {
+    padding: 12px;
+
+    background: var(--green-dark);
+    border: none;
+    border-radius: 8px;
+
+    color: white;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+#saveTaskBtn:hover {
+    background: var(--green);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+
+    .day {
+        width: calc(50% - 12px);
+        max-width: none;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 25px 15px;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    .week {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .day {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        min-height: auto;
+        padding: 18px;
+    }
+
+    .column {
+        min-height: 65px;
+    }
+
+    .add-day-task-btn {
+        margin-top: 5px;
+    }
+
 }
